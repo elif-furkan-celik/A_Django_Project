@@ -1,4 +1,11 @@
 from django.contrib import admin
 from .models import Photos
 
-admin.site.register(Photos)
+
+class PhotosAdmin(admin.ModelAdmin):
+    list_display = ['gender']
+    list_filter = ['gender']
+    search_fields = ['gender']
+
+
+admin.site.register(Photos, PhotosAdmin)

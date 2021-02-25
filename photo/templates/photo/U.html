@@ -1,0 +1,27 @@
+{% load static %}
+
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>label me</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+  </head>
+  
+  <body >
+    
+  
+    <input id="ex21" type="text"
+    data-provide="slider"
+    data-slider-ticks="[1, 2, 3]"
+    data-slider-ticks-labels='["short", "medium", "long"]'
+    data-slider-min="1"
+    data-slider-max="3"
+    data-slider-step="1"
+    data-slider-value="3"
+    data-slider-tooltip="hide" />
+  
+    
+  </body>
+</html>

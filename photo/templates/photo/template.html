@@ -1,0 +1,439 @@
+{% load static %}
+
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>label me</title>
+    <link rel="stylesheet" href="{% static 'css/update.css' %}">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+  </head>
+  <style>
+    /*
+    
+    .container-fluid {
+      border: 3px solid red;
+    }
+    .col-10 {
+      background: url('{% static "img\backgraund\1.jfif" %}');
+      background-repeat: no-repeat; 
+      background-attachment: fixed;
+      background-clip: border-box;
+      background-size: 100% 100%;
+      text-align: center; 
+      justify-content:center;
+      padding-top: 5vmin;
+      align-items:center;
+    }
+
+    .col-2 {
+      background: url('{% static "img\backgraund\images.jfif" %}');
+      background-repeat: repeat; 
+      background-attachment: scroll;
+      background-clip: border-box;
+      background-size: cover;
+      text-align: center; 
+      padding-top: 0.5vh;
+      color: rgb(215, 172, 248);
+      align-items:center;
+      height:60%;
+      overflow:scroll;
+    }
+    .box {
+      background-repeat: no-repeat; 
+      background-size: auto; 
+      border: 3px solid #4CAF50; 
+      border-radius: 3px; 
+      box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+      background: url('{% static "img\backgraund\images.jfif" %}');
+      background-repeat: repeat; 
+      background-attachment: scroll;
+      background-clip: border-box;
+      background-size: cover;
+      object-fit:contain;
+      max-width: 60%;
+      margin-left: 20%;
+      margin-top: 3%;
+      padding-bottom: 2vmin;
+    }
+    .box p {
+      color: azure;
+    }
+    .image {
+      align-items:center;
+      max-width: 100%;
+      max-height: 70vh;
+    }
+    .image img {
+      max-height:70vmin;
+      object-fit:contain;
+      border: 1px solid black; 
+      background-repeat: no-repeat; 
+      background-size: auto; 
+      max-width: 80%;
+      border: 1px solid rgb(136, 125, 125); 
+      border-radius: 5px; 
+      box-shadow: 0 0 1px 1px rgba(0, 140, 186, 0.5);
+    }
+*/
+  *{
+    box-sizing:border-box;
+    padding:0;
+    margin:0;
+  }
+  .slider:hover {
+      opacity: 1; 
+      }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none; 
+      appearance: none;
+      width: 7.5%; 
+      height: 3vmin; 
+      background: #4CAF50; 
+      cursor: pointer; 
+      }
+    .slider::-moz-range-thumb {
+      width: 80%; 
+      height: 3vmin; 
+      background: #4CAF50; 
+      cursor: pointer; 
+      }
+    .slider {
+      -webkit-appearance: none;  
+      appearance: none;
+      height: 3vmin; 
+      width: 80%;
+      background: #d3d3d3; 
+      outline: none; 
+      opacity: 0.7; 
+      -webkit-transition: .2s; 
+      transition: opacity .2s;
+      }
+    .submit {
+      background-color: #4CAF50; 
+      border: none;
+      color: white;
+      padding: 2vmin 2.5vmin;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 2.5vmin;
+    }
+  .container-fluid {
+      width:100%;
+      border:2px solid black;
+      display:grid;
+      grid-template-columns: 5fr 1fr;
+      height:100%;
+      
+    }
+    .left {
+      display:flex;
+      flex-direction:column;
+      background: url('{% static "img\backgraund\1.jfif" %}');
+      background-repeat: no-repeat; 
+      background-attachment: fixed;
+      background-clip: border-box;
+      background-size: 100% 100%;
+      text-align: center; 
+      justify-content:flex-start;
+      padding-top: 3vh;
+    }
+    .right {
+      background: url('{% static "img\backgraund\images.jfif" %}');
+      background-repeat: repeat; 
+      background-attachment: scroll;
+      background-clip: border-box;
+      background-size: cover;
+      text-align: center; 
+      padding-top: 0.5vh;
+      color: rgb(215, 172, 248);
+      align-items:center;
+      justify-content: center;
+      overflow-y:scroll;
+    }    
+    .questions {
+      background-repeat: no-repeat; 
+      background-size: auto; 
+      border: 3px solid #4CAF50; 
+      border-radius: 3px; 
+      box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+      background: url('{% static "img\backgraund\images.jfif" %}');
+      background-repeat: repeat; 
+      background-attachment: scroll;
+      background-clip: border-box;
+      background-size: cover;
+      object-fit:contain;
+      max-width: 85%;
+      margin-left: 7.5%;
+      margin-top: 3%;
+      padding-bottom: 2vmin;
+      text-align:center;
+      color: whitesmoke;
+    }
+    .questions .title {
+      font-size: 5vmax;
+      color: rgb(35, 144, 35);
+    }
+    .questions p {
+      font-size: 2vmax;
+      margin-top: 1%;
+    }
+    .questions input {
+      margin-top: 1%;
+    }
+    .image {
+      max-width: 90%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+    .image img {
+      width: 100%;
+      object-fit:contain;
+      border: 1px solid rgb(136, 125, 125); 
+      border-radius: 5px; 
+      box-shadow: 0 0 1px 1px rgba(0, 140, 186, 0.5);
+      margin-left: 5%;
+    }
+    .image .main_img{
+      border: none;
+      box-shadow: none;
+      border-radius: 5px; 
+      max-height: 75vh;
+      margin-left: 10%;
+    }
+  </style>
+
+  <body >
+    <div class="container-fluid" >
+        <div class="left" >
+          {% if photo.img %}
+            <div class="image">
+              <img src="{{ photo.img.url }}" class="main_img">
+            </div>
+          {% endif %}
+          <div class="questions">
+            <form method="Post">
+              {% csrf_token %}
+              <br><h1 class="title">{{ photo.using_count }}</h1>
+              {% if photo.using_count == 0 %}
+                <p><label for="id_answer10">Bu evi almayı hangi oranda isterdiniz? (1-10 arası):</label><br>
+                  <input type="range" min="0" max="10" value="{{ photo.answer10 }}" class="slider" id="id_answer10" type="text" name="answer10" required></p>
+                  <p>Value: <span id="demo10"></span></p>
+                <p><label for="id_answer20">Sizce bu fotoğrafın kalitesi nedir?(1-10 arası):</label><br>
+                  <input type="range" min="0" max="10" value="{{ photo.answer20 }}" class="slider" id="id_answer20" type="text" name="answer20" required></p>
+                  <p>Value: <span id="demo20"></span></p>
+                <p><label for="id_answer30" >Sizce bu evde oturmak istermiydiniz?(1-10 arası):</label><br>
+                  <input type="range" min="0" max="10" value="{{ photo.answer30 }}" class="slider" id="id_answer30" type="text" name="answer30" required></p>
+                  <p>Value: <span id="demo30"></span></p>
+              
+              {% elif photo.using_count == 1 %}
+                <p><label for="id_answer11">Bu evi almayı hangi oranda isterdiniz? (1-10 arası):</label><br>
+                  <p>Value: <span id="demo11"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer11 }}" class="slider" id="id_answer11" type="text" name="answer11" required></p>
+                <p><label for="id_answer21">Sizce bu fotoğrafın kalitesi nedir?(1-10 arası):</label><br>
+                  <p>Value: <span id="demo21"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer21 }}" class="slider" id="id_answer21" type="text" name="answer21" required></p>
+                <p><label for="id_answer31">Sizce bu evde oturmak istermiydiniz?(1-10 arası):</label><br>
+                  <p>Value: <span id="demo31"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer31 }}" class="slider" id="id_answer31" type="text" name="answer31" required></p>
+              {% elif photo.using_count == 2 %}
+                <p><label for="id_answer12">Bu evi almayı hangi oranda isterdiniz? (1-10 arası):</label><br>
+                  <p>Value: <span id="demo12"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer12 }}" class="slider" id="id_answer12" type="text" name="answer12" required></p>
+                <p><label for="id_answer22">Sizce bu fotoğrafın kalitesi nedir?(1-10 arası):</label><br>
+                  <p>Value: <span id="demo22"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer22 }}" class="slider" id="id_answer22" type="text" name="answer22" required></p>
+                <p><label for="id_answer32">Sizce bu evde oturmak istermiydiniz?(1-10 arası):</label><br>
+                  <p>Value: <span id="demo32"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer32 }}" class="slider" id="id_answer32" type="text" name="answer32" required></p>
+              {% elif photo.using_count == 3 %}
+                <p><label for="id_answer13">Bu evi almayı hangi oranda isterdiniz? (1-10 arası):</label><br>
+                  <p>Value: <span id="demo13"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer13 }}" class="slider" id="id_answer13" type="text" name="answer13" required></p>
+                <p><label for="id_answer23">Sizce bu fotoğrafın kalitesi nedir?(1-10 arası):</label><br>
+                  <p>Value: <span id="demo23"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer23 }}" class="slider" id="id_answer23" type="text" name="answer23" required></p>
+                <p><label for="id_answer33">Sizce bu evde oturmak istermiydiniz?(1-10 arası):</label><br>
+                  <p>Value: <span id="demo33"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer33 }}" class="slider" id="id_answer33" type="text" name="answer33" required></p>
+              {% elif photo.using_count == 4 %}
+                <p><label for="id_answer14">Bu evi almayı hangi oranda isterdiniz? (1-10 arası):</label><br>
+                  <p>Value: <span id="demo14"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer14 }}" class="slider" id="id_answer14" type="text" name="answer14" required></p>
+                <p><label for="id_answer24">Sizce bu fotoğrafın kalitesi nedir?(1-10 arası):</label><br>
+                  <p>Value: <span id="demo24"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer24 }}" class="slider" id="id_answer24" type="text" name="answer24" required></p>
+                <p><label for="id_answer34">Sizce bu evde oturmak istermiydiniz?(1-10 arası):</label><br>
+                  <p>Value: <span id="demo34"></span></p>
+                  <input type="range" min="0" max="10" value="{{ photo.answer34 }}" class="slider" id="id_answer34" type="text" name="answer34" required></p>
+              {% endif %}
+              <input class="submit" type="submit" value="Sıradaki">
+            </form>
+          </div>
+        </div>
+        <div class="right" >
+          {% for p in photos %}
+              {% if p.img %}
+                <div class="image">
+                  <a  href="{% url 'update' p.id %}">
+                    <img src="{{ p.img.url }}" >
+                  </a>
+                </div>
+              {% endif %}<br>
+          {% endfor %}
+        </div>
+      
+    </div>
+  
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script>
+    var slider10 = document.getElementById("id_answer10");
+    var output10 = document.getElementById("demo10");
+    output10.innerHTML = slider10.value;
+    
+    slider10.oninput = function() {
+      output10.innerHTML = this.value;
+    }
+    </script>
+    <script>
+      var slider20 = document.getElementById("id_answer20");
+      var output20 = document.getElementById("demo20");
+      output20.innerHTML = slider20.value;
+      
+      slider20.oninput = function() {
+        output20.innerHTML = this.value;
+      }
+      </script>
+      <script>
+        var slider30 = document.getElementById("id_answer30");
+        var output30 = document.getElementById("demo30");
+        output30.innerHTML = slider30.value;
+        
+        slider30.oninput = function() {
+          output30.innerHTML = this.value;
+        }
+        </script>
+    <script>
+      var slider11 = document.getElementById("id_answer11");
+      var output11 = document.getElementById("demo11");
+      output11.innerHTML = slider11.value;
+      
+      slider11.oninput = function() {
+        output11.innerHTML = this.value;
+      }
+      </script>
+      <script>
+        var slider21 = document.getElementById("id_answer21");
+        var output21 = document.getElementById("demo21");
+        output21.innerHTML = slider21.value;
+        
+        slider21.oninput = function() {
+          output21.innerHTML = this.value;
+        }
+        </script>
+        <script>
+          var slider31 = document.getElementById("id_answer31");
+          var output31 = document.getElementById("demo31");
+          output31.innerHTML = slider31.value;
+          
+          slider31.oninput = function() {
+            output31.innerHTML = this.value;
+          }
+          </script>
+      <script>
+        var slider12 = document.getElementById("id_answer12");
+        var output12 = document.getElementById("demo12");
+        output12.innerHTML = slider12.value;
+        
+        slider12.oninput = function() {
+          output12.innerHTML = this.value;
+        }
+        </script>
+        <script>
+          var slider22 = document.getElementById("id_answer22");
+          var output22 = document.getElementById("demo22");
+          output22.innerHTML = slider22.value;
+          
+          slider22.oninput = function() {
+            output22.innerHTML = this.value;
+          }
+          </script>
+          <script>
+            var slider32 = document.getElementById("id_answer32");
+            var output32 = document.getElementById("demo32");
+            output32.innerHTML = slider32.value;
+            
+            slider32.oninput = function() {
+              output32.innerHTML = this.value;
+            }
+            </script>
+        <script>
+          var slider13 = document.getElementById("id_answer13");
+          var output13 = document.getElementById("demo13");
+          output.innerHTML = slider.value;
+          
+          slider13.oninput = function() {
+            output13.innerHTML = this.value;
+          }
+          </script>
+           <script>
+            var slider23 = document.getElementById("id_answer23");
+            var output23 = document.getElementById("demo23");
+            output23.innerHTML = slider13.value;
+            
+            slider23.oninput = function() {
+              output23.innerHTML = this.value;
+            }
+            </script>
+             <script>
+              var slider33 = document.getElementById("id_answer33");
+              var output33 = document.getElementById("demo33");
+              output33.innerHTML = slider23.value;
+              
+              slider33.oninput = function() {
+                output33.innerHTML = this.value;
+              }
+              </script>
+          <script>
+            var slider14 = document.getElementById("id_answer14");
+            var output14 = document.getElementById("demo14");
+            output14.innerHTML = slider14.value;
+            
+            slider14.oninput = function() {
+              output14.innerHTML = this.value;
+            }
+            </script>
+            <script>
+              var slider24 = document.getElementById("id_answer24");
+              var output24 = document.getElementById("demo24");
+              output24.innerHTML = slider24.value;
+              
+              slider24.oninput = function() {
+                output24.innerHTML = this.value;
+              }
+              </script>
+              <script>
+                var slider34 = document.getElementById("id_answer24");
+                var output34 = document.getElementById("demo34");
+                output34.innerHTML = slider34.value;
+                
+                slider34.oninput = function() {
+                  output34.innerHTML = this.value;
+                }
+                </script>
+  <script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+          }
+      }
+    </script>
+  </body>
+</html>
